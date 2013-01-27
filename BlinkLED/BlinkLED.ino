@@ -10,16 +10,25 @@
 int led = 13;
 
 // the setup routine runs once when you press reset:
-void setup() {                
+void setup() {
+  Serial.begin(9600);
   // initialize the digital pin as an output.
-  pinMode(led, OUTPUT);     
+  pinMode(led, OUTPUT);
+  randomSeed(analogRead(0));
 }
 
 // the loop routine runs over and over again forever:
 void loop() {
+  long randNumber;
+  randNumber = random(50, 2000);
+  Serial.println(randNumber);
   digitalWrite(led, HIGH);   // turn the LED on (HIGH is the voltage level)
-  delay(2000);               // wait for a second
+  delay(randNumber);
+
+  // wait for a second
   digitalWrite(led, LOW);    // turn the LED off by making the voltage LOW
-  delay(1000);               // wait for a second
-  // 日本語のコメントかけないといわれていたけど、かけちゃったよ
+  randNumber = random(1000, 2000);
+  Serial.println(randNumber);
+  delay(randNumber);               // wait for a second
+ 
 }
